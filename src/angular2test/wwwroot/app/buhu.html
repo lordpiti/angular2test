@@ -1,0 +1,7 @@
+﻿<div>
+    Helloj, {{title}}
+    <div *ngIf="!ListaFinal || ListaFinal.length == 0">No items to display</div>
+
+    <div *ngFor="let user of ListaFinal | orderBy : ['-Id']">{{user.Id}} - {{user.Title}}</div>
+    <button (click)="eseTest()">YIJA</button>
+</div>
