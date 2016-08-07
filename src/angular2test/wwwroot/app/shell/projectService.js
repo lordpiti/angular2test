@@ -26,32 +26,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/add/operator/toPromise'
             ProjectService = (function () {
                 function ProjectService(http) {
                     this.http = http;
-                    this.ListaFinal = [];
-                    this._http = http;
                 }
-                ProjectService.prototype.extractData = function (res) {
-                    var body = res.json();
-                    return body || {};
-                };
-                ProjectService.prototype.handleError = function (error) {
-                    console.error('An error occurred', error);
-                    return Promise.reject(error.message || error);
-                };
                 ;
                 ProjectService.prototype.getProjects = function () {
-                    //this._http.get('https://api.spacehive.com/api/Projects')
-                    //    .subscribe(
-                    //    data => this.ListaFinal = this.extractData(data),
-                    //    err => console.log(err),
-                    //    () => console.log('Random Quote Complete' + this.ListaFinal)
-                    //);
-                    //return this.ListaFinal;
-                    //return this._http.get('https://api.spacehive.com/api/Projects')
-                    //    .toPromise()
-                    //    //.map(response => { return this.extractData(response) });
-                    //    .then(response => console.log(this.extractData(response)) ) 
-                    //    .catch(this.handleError);
-                    return this._http.get('https://api.spacehive.com/api/Projects')
+                    return this.http.get('https://api.spacehive.com/api/Projects')
                         .map(function (res) { return res.json(); });
                 };
                 ProjectService = __decorate([
