@@ -1,7 +1,21 @@
-﻿<div>
-    Helloj, {{title}}
+﻿
+<div class="container">
     <div *ngIf="!ListaFinal || ListaFinal.length == 0">No items to display</div>
 
-    <div *ngFor="let user of ListaFinal | orderBy : ['-Id']">{{user.Id}} - {{user.Title}}</div>
-    <button (click)="eseTest()">YIJA</button>
+    <table *ngIf="ListaFinal && ListaFinal.length > 0" class="table table-bordered tableCrud">
+        <thead>
+            <tr>
+                <th class="danger">Project Id</th>
+                <th class="danger">Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of ListaFinal | orderBy : ['-Id']">
+                <td>{{user.Id}}</td>
+                <td>{{user.Title}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary" (click)="eseTest()">Show projects</button>
 </div>
